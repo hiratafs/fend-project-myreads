@@ -18,7 +18,7 @@ class PaginaLivros extends Component {
                         <ol className="books-grid">
                            {this.props.livros.filter(livro => livro.shelf === "currentlyReading")
                                 .map(livro => (
-                                    <Livro key={livro.id} livro={livro} mudaEstante={this.props.mudaEstante}/>
+                                    <Livro key={livro.id} livro={livro} criaAlerta={this.props.criaAlerta}/>
                                 ))
                             } 
                         </ol>

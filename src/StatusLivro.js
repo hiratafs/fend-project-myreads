@@ -5,7 +5,7 @@ class StatusLivro extends Component  {
     render () {
         return (
             <div className="book-shelf-changer">
-                <select>
+                <select >
                     <option value="move" disabled>Mover para...</option>
                     <option value="currentlyReading">Lendo</option>
                     <option value="wantToRead">Quero Ler</option>
