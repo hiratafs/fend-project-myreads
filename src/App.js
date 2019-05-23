@@ -19,11 +19,9 @@ class BooksApp extends React.Component {
 /* RENDERIZAÇÃO DOS LIVROS NAS ESTANTES */
   componentDidMount() {
     BooksAPI.getAll().then(livros => {
-      this.setState({livros})
+      this.setState({livros: livros})
     })  
   }
-
-
 
 
 /* ATUALIZAÇÃO DO STATUS DOS LIVROS PELAS ESTANTES */
