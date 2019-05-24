@@ -9,7 +9,7 @@ class Livro extends Component  {
             <div className="book">
                 <div className="book-top">
                 <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.livro.imageLinks.thumbnail})` }}></div>
-                    <StatusLivro status={this.props.livro} />
+                    <StatusLivro livro={this.props.livro} atualizaLista={this.props.atualizaLista}/>
                 </div>
                 <div className="book-title">{this.props.livro.title}</div>
                 <div className="book-authors">{this.props.livro.authors}</div>

@@ -18,11 +18,18 @@ class BooksApp extends React.Component {
   
 /* RENDERIZAÇÃO DOS LIVROS NAS ESTANTES */
   componentDidMount() {
+    this.mostraCatalogo()
+  }
+
+  mostraCatalogo = () => {
     BooksAPI.getAll().then(livros => {
       this.setState({livros: livros})
     })  
   }
 
+  atualizaLista = (book, shelf) => {
+    BooksAPI.update(book, shelf).then(this.mostraCatalogo)
+  }
 
 /* ATUALIZAÇÃO DO STATUS DOS LIVROS PELAS ESTANTES */
 
@@ -30,7 +37,7 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-        <PaginaLivros  livros={this.state.livros} criaAlerta={this.criaAlerta}/>
+        <PaginaLivros  livros={this.state.livros} atualizaLista={this.atualizaLista}/>
       </div>
     )
   }

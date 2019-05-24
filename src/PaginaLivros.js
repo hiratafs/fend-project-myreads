@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Livro from './Livro'
+import AdicionaLivro from './AdicionaLivro'
 
 class PaginaLivros extends Component {
     render () {
@@ -18,7 +19,10 @@ class PaginaLivros extends Component {
                         <ol className="books-grid">
                            {this.props.livros.filter(livro => livro.shelf === "currentlyReading")
                                 .map(livro => (
-                                    <Livro key={livro.id} livro={livro} criaAlerta={this.props.criaAlerta}/>
+                                    <Livro key={livro.id} livro={livro} 
+                                    atualizaLista={this.props.atualizaLista}
+                                    estante="currentlyReading"
+                                    />
                                 ))
                             } 
                         </ol>
@@ -32,7 +36,9 @@ class PaginaLivros extends Component {
                         <ol className="books-grid">
                         {this.props.livros.filter(livro => livro.shelf === "wantToRead")
                                 .map(livro => (
-                                    <Livro key={livro.id} livro={livro} />
+                                    <Livro key={livro.id} livro={livro} 
+                                    atualizaLista={this.props.atualizaLista} 
+                                    estante="wantToRead"/>
                                 ))
                             } 
                         </ol>
@@ -47,7 +53,10 @@ class PaginaLivros extends Component {
                         <ol className="books-grid">
                         {this.props.livros.filter(livro => livro.shelf === "read")
                                 .map(livro => (
-                                    <Livro key={livro.id} livro={livro} />
+                                    <Livro key={livro.id} livro={livro} 
+                                    atualizaLista={this.props.atualizaLista} 
+                                    estante="read"
+                                    />
                                 ))
                             } 
                         </ol>
@@ -55,9 +64,7 @@ class PaginaLivros extends Component {
                     </div>
                   </div>
                 </div>
-                <div className="open-search">
-                  <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
-                </div>
+                <AdicionaLivro />
             </div>
         )
     }
