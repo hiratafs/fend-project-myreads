@@ -4,7 +4,7 @@ class AdicionaLivro extends Component {
     render () {
         return (
         <div className="open-search">
-            <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
+            <button onClick={() => this.props.acionaBusca()}>Adicionar livro</button>
         </div>
         )
     }
