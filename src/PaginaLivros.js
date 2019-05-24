@@ -64,7 +64,7 @@ class PaginaLivros extends Component {
                     </div>
                   </div>
                 </div>
-                <AdicionaLivro acionaBusca={this.props.acionaBusca}/>
+                <AdicionaLivro mudaPagina={this.props.mudaPagina}/>
             </div>
         )
     }

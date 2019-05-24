@@ -12,7 +12,9 @@ class BooksApp extends React.Component {
      * users can use the browser's back and forward buttons to navigate between
      * pages, as well as provide a good URL they can bookmark and share.
      */
-    showSearchPage: false,
+
+    /* listalivros ou busca */
+    pagina: 'listalivros',
     livros: [],
 
   }
@@ -32,25 +34,26 @@ class BooksApp extends React.Component {
     BooksAPI.update(book, shelf).then(this.mostraCatalogo)
   }
 
-  acionaBusca = () => {
-    this.setState({showSearchPage: true})
-    this.mostraCatalogo()
+  mudaPagina = () => {
+    console.log("Mudei a página")
   }
+  
 
 /* ATUALIZAÇÃO DO STATUS DOS LIVROS PELAS ESTANTES */
 
    render() {
-    return (
-      <div className="app">
-        {this.state.showSearchPage === false && (
-            <PaginaLivros  livros={this.state.livros} atualizaLista={this.atualizaLista} acionaBusca={this.acionaBusca}/>
-        )}
-        
-        {this.state.showSearchPage === true && (
-             <PaginaBusca livros={this.state.livros}/>
-        )}
-      </div>
-    )
+      return (
+        <div className="app">
+          {this.state.pagina === 'listalivros' && (
+              <PaginaLivros  livros={this.state.livros} atualizaLista={this.atualizaLista} mudaPagina={this.mudaPagina} />
+          )}
+
+          {this.state.pagina === 'busca' && (
+              <PaginaBusca livros={this.state.livros} atualizaLista={this.atualizaLista} />
+          )}
+
+        </div>
+      )
   }
 }
 
