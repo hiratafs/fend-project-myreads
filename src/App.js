@@ -2,7 +2,7 @@ import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import PaginaLivros from './PaginaLivros'
-//import PaginaBusca from '.PaginaBusca'
+import PaginaBusca from './PaginaBusca'
 
 class BooksApp extends React.Component {
   state = {
@@ -13,7 +13,8 @@ class BooksApp extends React.Component {
      * pages, as well as provide a good URL they can bookmark and share.
      */
     showSearchPage: false,
-    livros: []
+    livros: [],
+
   }
   
 /* RENDERIZAÇÃO DOS LIVROS NAS ESTANTES */
@@ -31,13 +32,23 @@ class BooksApp extends React.Component {
     BooksAPI.update(book, shelf).then(this.mostraCatalogo)
   }
 
+  acionaBusca = () => {
+    this.setState({showSearchPage: true})
+    this.mostraCatalogo()
+  }
+
 /* ATUALIZAÇÃO DO STATUS DOS LIVROS PELAS ESTANTES */
 
- 
-  render() {
+   render() {
     return (
       <div className="app">
-        <PaginaLivros  livros={this.state.livros} atualizaLista={this.atualizaLista}/>
+        {this.state.showSearchPage === false && (
+            <PaginaLivros  livros={this.state.livros} atualizaLista={this.atualizaLista} acionaBusca={this.acionaBusca}/>
+        )}
+        
+        {this.state.showSearchPage === true && (
+             <PaginaBusca livros={this.state.livros}/>
+        )}
       </div>
     )
   }
