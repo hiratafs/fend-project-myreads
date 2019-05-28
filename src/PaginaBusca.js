@@ -1,17 +1,28 @@
 import React, { Component } from 'react'
 import BotaoRetorna from './BotaoRetorna';
-//import * as BooksAPI from './BooksAPI';
-//import Livro from 'react'
-//import BotaoRetorna from './BotaoRetorna'
+import * as BooksAPI from './BooksAPI';
+import Livro from './Livro'
 
 class PaginaBusca extends Component  {
 
   state = {
-    query: ' '
+    query: '',
+    resultadobusca: []
   }
 
 
+  updateQuery = (query) => {
+    this.setState({query:query})
 
+    if(query) {
+      BooksAPI.search(query).then(livros => {
+        if(livros.length > 0) {
+          this.setState({resultadobusca: livros})
+          console.log(this.state.resultadobusca)
+        }
+      })
+    }
+  }
 
   render() {
     return (
@@ -27,13 +38,18 @@ class PaginaBusca extends Component  {
                   However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
-                <input type="text" placeholder="Search by title or author" value={this.state.query} />
+                <input type="text" 
+                placeholder="Search by title or author" 
+                onChange={(event) => this.updateQuery(event.target.value)}
+                value={this.state.query} />
 
               </div>
           </div>
           <div className="search-books-results">
             <ol className="books-grid">
-              
+              {this.state.resultadobusca.map(livro => (
+                <Livro key={livro.id} livro={livro} atualizaLista={this.props.atualizaLista}/>
+              ))}
             </ol>
           </div>
         </div>
