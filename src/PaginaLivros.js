@@ -21,7 +21,6 @@ class PaginaLivros extends Component {
                                 .map(livro => (
                                     <Livro key={livro.id} livro={livro} 
                                     atualizaLista={this.props.atualizaLista}
-                                    estante="currentlyReading"
                                     />
                                 ))
                             } 
@@ -38,7 +37,7 @@ class PaginaLivros extends Component {
                                 .map(livro => (
                                     <Livro key={livro.id} livro={livro} 
                                     atualizaLista={this.props.atualizaLista} 
-                                    estante="wantToRead"/>
+/>
                                 ))
                             } 
                         </ol>
@@ -55,7 +54,6 @@ class PaginaLivros extends Component {
                                 .map(livro => (
                                     <Livro key={livro.id} livro={livro} 
                                     atualizaLista={this.props.atualizaLista} 
-                                    estante="read"
                                     />
                                 ))
                             } 
@@ -64,7 +62,7 @@ class PaginaLivros extends Component {
                     </div>
                   </div>
                 </div>
-                <AdicionaLivro mudaPagina={this.props.mudaPagina}/>
+                <AdicionaLivro />
             </div>
         )
     }
