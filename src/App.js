@@ -3,6 +3,7 @@ import * as BooksAPI from './BooksAPI'
 import './App.css'
 import PaginaLivros from './PaginaLivros'
 import PaginaBusca from './PaginaBusca'
+import { Route } from 'react-router-dom'
 
 class BooksApp extends React.Component {
   state = {
@@ -34,25 +35,32 @@ class BooksApp extends React.Component {
     BooksAPI.update(book, shelf).then(this.mostraCatalogo)
   }
 
-  mudaPagina = () => {
-    console.log("Mudei a página")
-  }
-  
+
 
 /* ATUALIZAÇÃO DO STATUS DOS LIVROS PELAS ESTANTES */
 
    render() {
       return (
-        <div className="app">
-          {this.state.pagina === 'listalivros' && (
-              <PaginaLivros  livros={this.state.livros} atualizaLista={this.atualizaLista} mudaPagina={this.mudaPagina} />
-          )}
+          <div className="app">
 
-          {this.state.pagina === 'busca' && (
+            <Route exact path='/' render={() => (
+              <PaginaLivros  livros={this.state.livros} atualizaLista={this.atualizaLista}  />
+            )}
+            />
+
+            <Route path='/busca' render={() => (
               <PaginaBusca livros={this.state.livros} atualizaLista={this.atualizaLista} />
-          )}
+            )} />
 
-        </div>
+            {/*this.state.pagina === 'listalivros' && (
+                <PaginaLivros  livros={this.state.livros} atualizaLista={this.atualizaLista}  />
+            )}
+
+            {this.state.pagina === 'busca' && (
+                <PaginaBusca livros={this.state.livros} atualizaLista={this.atualizaLista} />
+            ) */}
+
+          </div>
       )
   }
 }
