@@ -1,15 +1,19 @@
-# MyReads Project
+# Projeto App MyReads 
 
-This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
+Este é o quinto projeto do Naodegree Web Front-End Avançado da Udacity. Trata-se de um app para registrar as leituras, classificando cada livro em uma estante (Lendo, Quero Ler e Lido). Foi feito em React a partir do código já fornecido pelo curso, cabendo ao aluno resolver a interação entre os componentes. A API para os livros, fornecida pela Udacity, possui uma lista limitada de títulos, sendo utilizada apenas para a execução deste projeto.
 
-Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
 
-## TL;DR
+## Como funciona
 
-To get started developing right away:
+* [Clone](https://github.com/hiratafs/fend-project-myreads.git) ou [baixe o projeto](https://github.com/hiratafs/fend-project-myreads/archive/master.zip) em sua máquina.
+* Na pasta do projeto, instale todas as dependências com o comando `yarn install`
+* Depois da instalação dos pacotes ligados ao projetos, inicie o servidor com `yarn start`
 
-* install all project dependencies with `npm install`
-* start the development server with `npm start`
+## Recursos utilizados neste projeto
+* Visual Studio Code
+* [Github](http://github.com)
+* [React](https://reactjs.org/)
+* [Yarn](https://yarnpkg.com/pt-BR/)
 
 ## What You're Getting
 ```bash
