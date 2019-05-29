@@ -16,11 +16,10 @@ class PaginaBusca extends Component  {
 
     if(query) {
       BooksAPI.search(query).then(livros => {
-        if(livros.length > 0) {
-          this.setState({resultadobusca: livros})
-          console.log(this.state.resultadobusca)
-        }
+        livros.length > 0 ? this.setState({resultadobusca: livros}) : this.setState({resultadobusca: []})
       })
+    } else {
+      this.setState({resultadobusca: []})
     }
   }
 
@@ -48,7 +47,7 @@ class PaginaBusca extends Component  {
           <div className="search-books-results">
             <ol className="books-grid">
               {this.state.resultadobusca.map(livro => (
-                <Livro key={livro.id} livro={livro} atualizaLista={this.props.atualizaLista} estanteatual="none"/>
+                <Livro key={livro.id} livro={livro} atualizaLista={this.props.atualizaLista}/>
               ))}
             </ol>
           </div>
