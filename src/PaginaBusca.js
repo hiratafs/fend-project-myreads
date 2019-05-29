@@ -48,7 +48,7 @@ class PaginaBusca extends Component  {
           <div className="search-books-results">
             <ol className="books-grid">
               {this.state.resultadobusca.map(livro => (
-                <Livro key={livro.id} livro={livro} atualizaLista={this.props.atualizaLista}/>
+                <Livro key={livro.id} livro={livro} atualizaLista={this.props.atualizaLista} estanteatual="none"/>
               ))}
             </ol>
           </div>
