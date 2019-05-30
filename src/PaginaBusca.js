@@ -7,23 +7,27 @@ class PaginaBusca extends Component  {
 
   state = {
     query: '',
-    resultadobusca: []
+    resultadobusca: [],
+    limpaBusca: false
   }
 
 
   updateQuery = (query) => {
-    this.setState({query:query})
+    this.setState({query})
 
-    if(query) {
-      BooksAPI.search(query).then(livros => {
-        livros.length > 0 ? this.setState({resultadobusca: livros}) : this.setState({resultadobusca: []})
-      })
+    if(!query) {
+      this.setState({resultadobusca:[],  limpaBusca: true})
     } else {
-      this.setState({resultadobusca: []})
+      BooksAPI.search(query).then(livros => {
+        livros.length > 0 ? this.setState({resultadobusca: livros, limpaBusca: false}) : this.setState({resultadobusca: [], limpaBusca: true})
+      })
     }
   }
 
+
+
   render() {
+    console.log(this.state.resultadobusca)
     return (
       <div className="search-books">
           <div className="search-books-bar">
@@ -45,11 +49,17 @@ class PaginaBusca extends Component  {
               </div>
           </div>
           <div className="search-books-results">
-            <ol className="books-grid">
+            {this.state.resultadobusca.length !== 0 && (<ol className="books-grid">
               {this.state.resultadobusca.map(livro => (
-                <Livro key={livro.id} livro={livro} atualizaLista={this.props.atualizaLista}/>
+                <Livro key={livro.id} livro={livro} atualizaLista={this.props.atualizaLista} estanteatual={livro.shelf}/>
               ))}
-            </ol>
+            </ol>)}
+
+            {this.state.limpaBusca && (
+                <div>
+                  <p>Nenhum resultado! Tente novamente!</p>
+                </div>
+            )}
           </div>
         </div>
   )
