@@ -19,7 +19,7 @@ class PaginaLivros extends Component {
                         <ol className="books-grid">
                            {this.props.livros.filter(livro => livro.shelf === "currentlyReading")
                                 .map(livro => (
-                                    <Livro key={livro.id} livro={livro} 
+                                    <Livro key={livro.id} livros={this.props.livros} livro={livro} 
                                     atualizaLista={this.props.atualizaLista}
                                     estanteatual={livro.shelf}
                                     />
@@ -36,7 +36,7 @@ class PaginaLivros extends Component {
                         <ol className="books-grid">
                         {this.props.livros.filter(livro => livro.shelf === "wantToRead")
                                 .map(livro => (
-                                    <Livro key={livro.id} livro={livro} 
+                                    <Livro key={livro.id} livros={this.props.livros} livro={livro} 
                                     atualizaLista={this.props.atualizaLista} 
                                     estanteatual={livro.shelf}
                                     />
@@ -54,7 +54,7 @@ class PaginaLivros extends Component {
                         <ol className="books-grid">
                         {this.props.livros.filter(livro => livro.shelf === "read")
                                 .map(livro => (
-                                    <Livro key={livro.id} livro={livro} 
+                                    <Livro key={livro.id} livros={this.props.livros} livro={livro} 
                                     atualizaLista={this.props.atualizaLista} 
                                     estanteatual={livro.shelf}
                                     />
